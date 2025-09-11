@@ -27,6 +27,9 @@ out/
 build
 dist
 
+#sentry
+.env.sentry-build-plugin
+
 
 # Debug
 npm-debug.log*
