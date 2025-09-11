@@ -1,28 +1,34 @@
-import { query } from "./_generated/server";
-import { mutation } from "./_generated/server";
+import { query } from './_generated/server'
+import { mutation } from './_generated/server'
 
 export const getMany = query({
-  args: {},
-  handler: async (ctx) => {
-    const users = await ctx.db.query("users").collect();
-    
-    return users;
-  },
-});
+    args: {},
+    handler: async (ctx) => {
+        const users = await ctx.db.query('users').collect()
+
+        return users
+    },
+})
 
 export const add = mutation({
-  args: {},
-  handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
+    args: {},
+    handler: async (ctx) => {
+        const identity = await ctx.auth.getUserIdentity()
 
-    if (identity === null) {
-      throw new Error("Not authenticated");
-    }
+        if (identity === null) {
+            throw new Error('Not authenticated')
+        }
 
-    const userId = await ctx.db.insert("users", {
-      name: "John Doe",
-    });
+        const orgId = identity.orgId as string;
 
-    return userId;
-  },
-});
+        if (!orgId) {
+            throw new Error('Missing organization id')
+        }
+
+        const userId = await ctx.db.insert('users', {
+            name: 'John Doe',
+        })
+
+        return userId
+    },
+})
