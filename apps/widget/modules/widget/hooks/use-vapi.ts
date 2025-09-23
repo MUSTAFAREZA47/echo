@@ -16,7 +16,7 @@ export const useVapi = () => {
 
     useEffect(() => {
         // TODO: Add your VAPI API key here
-        const vapiInstance = new Vapi('6fc3929a-ac68-41e0-b5c6-117e0a5dd674')
+        const vapiInstance = new Vapi('')
         setVapi(vapiInstance)
 
         vapiInstance.on("call-start", () => {
@@ -67,7 +67,7 @@ export const useVapi = () => {
 
         if (vapi) {
             // TODO: Add your VAPI agent ID here
-            vapi.start('6a9f0cf3-1b40-443e-a248-7f8f08048946')
+            vapi.start('')
         }  
     }
 
