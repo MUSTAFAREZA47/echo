@@ -1,10 +1,10 @@
 "use client"
 
-import { WidgetFooter } from "../components/widget-footer";
-import { WidgetHeader } from "../components/widget-header";
+import { useAtomValue } from "jotai";
 import { WidgetAuthScreen } from "../screens/widget-auth-screen";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@workspace/ui/components/form"
-import { Button } from "@workspace/ui/components/button"
+import { screenAtoms } from "../../atoms/widget-atoms";
+import { WIDGET_SCREENS } from "../../constants";
+import { WidgetScreen } from "../../types";
 
 
 interface Props {
@@ -12,11 +12,25 @@ interface Props {
 }
 
 export const WidgetView = ({ organizationId }: Props) => {
+    const screen = useAtomValue(screenAtoms);
+
+    const screenComponents = {
+        error: <p>TODO: Error</p>,
+        loading: <p>TODO: loading</p>,
+        auth: <WidgetAuthScreen />,
+        voice: <p>TODO: voice</p>,  
+        inbox: <p>TODO: inbox</p>,
+        selection: <p>TODO: selection</p>,
+        chat: <p>TODO: chat</p>,
+        contact: <p>TODO: contact</p>
+    }
+    
     return (
         // TODO: Correct this to be min-h-svh
         <main className="min-h-svh min-w-svh flex h-full w-full flex-col overflow-hidden rounded-xl border bg-muted">
-            <WidgetAuthScreen />
-            {/* <WidgetFooter /> */}
+           {
+            screenComponents[screen]
+           }
         </main>
     )
 }
