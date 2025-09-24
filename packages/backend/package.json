@@ -14,7 +14,10 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@ai-sdk/google": "^2.0.16",
     "@clerk/backend": "^2.15.0",
+    "@convex-dev/agent": "^0.2.10",
+    "ai": "^5.0.51",
     "convex": "^1.27.0"
   }
 }
