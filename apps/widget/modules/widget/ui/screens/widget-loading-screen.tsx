@@ -94,6 +94,7 @@ export const WidgetLoadingScreen = ({
         })
     }, [step, setLoadingMessage, validateContactSession, contactSessionId])
 
+    // Set screen
     useEffect(() => {
         if (step !== 'done') {
             return;
