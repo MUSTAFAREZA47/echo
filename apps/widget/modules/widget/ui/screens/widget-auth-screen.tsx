@@ -16,7 +16,7 @@ import { useMutation } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
 import { Doc } from "@workspace/backend/_generated/dataModel";
 import { useAtomValue, useSetAtom } from "jotai";
-import { contactSessionIdAtomFamily, organizationIdAtom } from "../../atoms/widget-atoms";
+import { contactSessionIdAtomFamily, organizationIdAtom, screenAtoms } from "../../atoms/widget-atoms";
 
 
 const formSchema = z.object({
@@ -25,10 +25,8 @@ const formSchema = z.object({
 })
 
 
-// TODO: Temporarily test organizationId, before we get state management
-const organizationId = "123"
-
 export const WidgetAuthScreen = () => {
+    const setScreen = useSetAtom(screenAtoms)
     const organizationId = useAtomValue(organizationIdAtom)
     const setContactSessionId = useSetAtom(contactSessionIdAtomFamily(organizationId || ""))
 
@@ -72,6 +70,7 @@ export const WidgetAuthScreen = () => {
 
     // console.log(contactSessionId)
     setContactSessionId(contactSessionId)
+    setScreen('selection')
 }
 
     return (
