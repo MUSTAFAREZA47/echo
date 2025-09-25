@@ -41,6 +41,7 @@ import { FormField } from '@workspace/ui/components/form'
 import { useInfiniteScroll } from '@workspace/ui/hooks/use-infinite-scroll'
 import { InfiniteScrollTrigger } from '@workspace/ui/components/infinite-scroll-trigger'
 import { DicebearAvatar } from '@workspace/ui/components/dicebear-avatar'
+import { fa } from 'zod/v4/locales'
 const formSchema = z.object({
     message: z.string().min(1, 'Message is required'),
 })
