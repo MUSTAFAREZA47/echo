@@ -30,7 +30,7 @@ export const DicebearAvatar = ({
         
         const avatar = createAvatar(glass, { seed: seed.toLowerCase().trim(), size })
         return avatar.toDataUri
-    }, [seed, size])
+    }, [seed, size, imageUrl])
 
     const badgeSize = Math.round(size * 0.5)
 
